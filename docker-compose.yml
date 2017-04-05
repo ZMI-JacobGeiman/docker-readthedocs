@@ -6,8 +6,15 @@ db:
     - DB_NAME=docs
   volumes:
     - ./pgsql:/var/lib/postgresql
+  ports:
+    - "5432:5432"
 readthedocs:
   build: .
+  environment:
+    - DB_USER=docs
+    - DB_PASS=secretpassword
+    - DB_NAME=docs
+    #- DB_PORT_NUM=5432
   ports:
     - "8000:8000"
   links:
@@ -24,3 +31,6 @@ elasticsearch:
     - ./es:/var/lib/elasticsearch
 redis:
   image: redis
+build:
+  image: readthedocs/build
+

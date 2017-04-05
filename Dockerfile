@@ -40,9 +40,11 @@ RUN adduser --gecos 'py' --disabled-password py
 RUN mkdir -p $APPDIR && cd /tmp && \
     wget -q --no-check-certificate https://github.com/rtfd/readthedocs.org/archive/master.zip 
 
-ADD config /
-
+ADD config/bin/rtd-install.sh /bin/rtd-install.sh
 RUN /bin/rtd-install.sh
+
+ADD config /
+RUN /bin/rtd-config.sh
 
 # Docker config
 EXPOSE 8000
