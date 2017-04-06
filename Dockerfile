@@ -48,5 +48,4 @@ RUN /bin/rtd-config.sh
 
 # Docker config
 EXPOSE 8000
-VOLUME ["/app"]
 CMD ["/bin/rtd-start.sh"]
